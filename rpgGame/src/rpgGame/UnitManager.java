@@ -17,7 +17,7 @@ public class UnitManager {
 	public ArrayList<Unit> createMonsters() {
 		ArrayList<Unit> monsters = new ArrayList<Unit>();
 		Class<?> params[] = new Class<?>[] { int.class, int.class, int.class };
-		int rNum = ran.nextInt(5);
+		int rNum = ran.nextInt(5)+1;
 		for (int i = 0; i < rNum; i++) {
 			int rIndex = ran.nextInt(3);
 			path = "rpgGame." + monsterName[rIndex];
