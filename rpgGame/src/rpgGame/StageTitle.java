@@ -75,11 +75,11 @@ public class StageTitle extends Stage {
 	}
 
 	public Player getPlayer() {
-		if(GameManager.isRun) {
+		if (GameManager.isRun) {
 			printPlayer();
 			String name = choicePlayer();
 			Object obj = setPlayer(name);
-			
+
 			if (obj instanceof PlayerWarrior) {
 				PlayerWarrior player = (PlayerWarrior) obj;
 				return player;
@@ -89,7 +89,7 @@ public class StageTitle extends Stage {
 			} else if (obj instanceof PlayerPaladin) {
 				PlayerPaladin player = (PlayerPaladin) obj;
 				return player;
-			}			
+			}
 		}
 		return null;
 	}
