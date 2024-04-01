@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class GameManager {
 	public static Scanner sc = new Scanner(System.in);
 	public static boolean isRun;
+	private StageTitle stageTitle = StageTitle.getInstance();
+	private StageLobby stageLobby = StageLobby.getInstance();
+	private Player player;
+	
 	
 	public GameManager() {
 		isRun = false;
@@ -26,4 +30,11 @@ public class GameManager {
 		}
 		return number;
 	}
+	
+	public void run() {
+		stageTitle.printMenu();
+		player = stageTitle.getPlayer();
+		
+	}
+	
 }
