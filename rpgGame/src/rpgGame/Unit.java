@@ -2,7 +2,7 @@ package rpgGame;
 
 abstract public class Unit {
 	private int maxHp;
-	private int curtHp;
+	private int curHp;
 	private int offensivePower;
 	private String name;
 	private boolean isDead;
@@ -11,7 +11,7 @@ abstract public class Unit {
 	public Unit(String name, int maxHp, int offensivePower, int exp) {
 		this.name = name;
 		this.maxHp = maxHp;
-		this.curtHp = this.maxHp;
+		this.curHp = this.maxHp;
 		this.offensivePower = offensivePower;
 		this.isDead = false;
 		this.exp = exp;
@@ -29,9 +29,9 @@ abstract public class Unit {
 				target.getOffensivePower());
 		System.err.println(info);
 
-		this.curtHp -= target.getOffensivePower();
+		this.curHp -= target.getOffensivePower();
 
-		if (this.curtHp <= 0) {
+		if (this.curHp <= 0) {
 			System.err.println("[" + this.name + "]" + "가 죽었습니다...");
 			this.isDead = true;
 			return this.exp;
@@ -57,10 +57,19 @@ abstract public class Unit {
 		return this.offensivePower;
 	}
 
+	public void setCurHp(int heal) {
+		if (curHp + heal > maxHp) {
+			this.curHp = this.maxHp;
+			return;
+		}
+
+		curHp += heal;
+	}
+
 	public void levelUp() {
 		this.exp -= 100;
 		this.maxHp += this.maxHp / 3;
-		this.curtHp = this.maxHp;
+		this.curHp = this.maxHp;
 		this.offensivePower += this.offensivePower / 3;
 	}
 }
