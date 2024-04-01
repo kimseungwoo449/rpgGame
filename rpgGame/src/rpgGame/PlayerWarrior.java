@@ -3,8 +3,8 @@ package rpgGame;
 public class PlayerWarrior extends Player {
 	private boolean isSkilled;
 
-	public PlayerWarrior(String name, int maxHp, int offensivePower, int exp) {
-		super(name, maxHp, offensivePower, exp);
+	public PlayerWarrior() {
+		super("전사", 1000, 65, 0);
 		this.isSkilled = false;
 	}
 

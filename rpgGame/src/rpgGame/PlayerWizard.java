@@ -2,8 +2,8 @@ package rpgGame;
 
 public class PlayerWizard extends Player {
 
-	public PlayerWizard(String name, int maxHp, int offensivePower, int exp) {
-		super(name, maxHp, offensivePower, exp);
+	public PlayerWizard() {
+		super("마법사", 700, 50, 0);
 	}
 
 	@Override

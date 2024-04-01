@@ -3,7 +3,7 @@ package rpgGame;
 public class PlayerPaladin extends Player {
 
 	public PlayerPaladin(String name, int maxHp, int offensivePower, int exp) {
-		super(name, maxHp, offensivePower, exp);
+		super("성기사", 800, 60, 0);
 	}
 	
 	@Override
