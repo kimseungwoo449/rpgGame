@@ -72,4 +72,10 @@ abstract public class Unit {
 		this.curHp = this.maxHp;
 		this.offensivePower += this.offensivePower / 3;
 	}
+	
+	@Override
+	public String toString() {
+		String info = String.format("[%s] [%d/%d] [%d]", name,curHp,maxHp,offensivePower);
+		return info;
+	}
 }
