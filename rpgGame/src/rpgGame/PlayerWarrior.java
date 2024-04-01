@@ -9,7 +9,7 @@ public class PlayerWarrior extends Player {
 	}
 
 	@Override
-	public int skill() {
+	public int skill(Unit target) {
 		if(isSkilled) {
 			System.err.println("공격이 이미 강화된 상태입니다.");
 			return 1;

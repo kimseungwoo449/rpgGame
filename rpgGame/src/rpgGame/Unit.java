@@ -39,7 +39,7 @@ abstract public class Unit {
 		return 0;
 	}
 
-	abstract public int skill();
+	abstract public int skill(Unit target);
 
 	public String getName() {
 		return this.name;
