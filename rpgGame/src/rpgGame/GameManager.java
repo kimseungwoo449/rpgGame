@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class GameManager {
 	public static Scanner sc = new Scanner(System.in);
+	public static boolean isRun;
+	
+	public GameManager() {
+		isRun = false;
+	}
 	
 	public static String inputString(String message) {
 		System.out.print(message + " : ");
