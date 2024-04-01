@@ -7,8 +7,8 @@ abstract public class Unit {
 	private String name;
 	private boolean isDead;
 	private int exp;
-	
-	public Unit(String name, int maxHp, int offensivePower,int exp) {
+
+	public Unit(String name, int maxHp, int offensivePower, int exp) {
 		this.name = name;
 		this.maxHp = maxHp;
 		this.curtHp = this.maxHp;
@@ -18,33 +18,49 @@ abstract public class Unit {
 	}
 
 	public Unit attack(Unit target) {
-		String info = String.format("[%s]에게 %d의 대미지를 입혔습니다!",target.getName(), this.offensivePower);
+		String info = String.format("[%s]가 [%s]에게 %d의 대미지를 입혔습니다!", this.name, target.getName(), this.offensivePower);
 		System.out.println(info);
-		
+
 		return this;
 	}
-	
+
 	public int takeDamage(Unit target) {
-		String info = String.format("[%s]에게 %d의 대미지를 받았습니다!!!", target.getName(),target.getOffensivePower());
+		String info = String.format("[%s]가 [%s]에게 %d의 대미지를 받았습니다!!!", this.name, target.getName(),
+				target.getOffensivePower());
 		System.err.println(info);
-		
-		this.curtHp-=target.getOffensivePower();
-		
-		if(this.curtHp<=0) {
-			System.err.println("["+this.name+"]"+"가 죽었습니다...");
+
+		this.curtHp -= target.getOffensivePower();
+
+		if (this.curtHp <= 0) {
+			System.err.println("[" + this.name + "]" + "가 죽었습니다...");
 			this.isDead = true;
 			return this.exp;
 		}
 		return 0;
 	}
-	
+
 	abstract public int skill();
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
+
+	public int getExp() {
+		return this.exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp += exp;
+	}
+
 	public int getOffensivePower() {
 		return this.offensivePower;
+	}
+
+	public void levelUp() {
+		this.exp -= 100;
+		this.maxHp += this.maxHp / 3;
+		this.curtHp = this.maxHp;
+		this.offensivePower += this.offensivePower / 3;
 	}
 }
