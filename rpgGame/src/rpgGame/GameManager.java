@@ -5,13 +5,17 @@ import java.util.Scanner;
 public class GameManager {
 	public static Scanner sc = new Scanner(System.in);
 	public static boolean isRun;
+	public static boolean battle;
+	private UnitManager unitManager = UnitManager.getInstance();
 	private StageTitle stageTitle = StageTitle.getInstance();
 	private StageLobby stageLobby = StageLobby.getInstance();
+	private StageBattle stageBattle;
 	private Player player;
 	
 	
 	public GameManager() {
 		isRun = false;
+		battle = false;
 	}
 	
 	public static String inputString(String message) {
@@ -34,7 +38,13 @@ public class GameManager {
 	public void run() {
 		stageTitle.printMenu();
 		player = stageTitle.getPlayer();
-		
+		while(isRun) {
+			stageLobby.printMenu();
+			if(battle) {
+				stageBattle = new StageBattle(player, unitManager.createMonsters());
+				stageBattle.printMenu();
+			}
+		}
 	}
 	
 }
