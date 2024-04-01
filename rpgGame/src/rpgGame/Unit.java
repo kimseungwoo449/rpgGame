@@ -17,26 +17,25 @@ abstract public class Unit {
 		this.exp = exp;
 	}
 
-	public Unit attack(Unit target) {
+	public int attack(Unit target) {
 		String info = String.format("[%s]가 [%s]에게 %d의 대미지를 입혔습니다!", this.name, target.getName(), this.offensivePower);
 		System.out.println(info);
 
-		return this;
+		return this.offensivePower;
 	}
 
-	public int takeDamage(Unit target) {
+	public void takeDamage(Unit target,int attack) {
 		String info = String.format("[%s]가 [%s]에게 %d의 대미지를 받았습니다!!!", this.name, target.getName(),
-				target.getOffensivePower());
+				attack);
 		System.err.println(info);
 
-		this.curHp -= target.getOffensivePower();
+		this.curHp -= attack;
 
 		if (this.curHp <= 0) {
+			this.curHp = 0;
 			System.err.println("[" + this.name + "]" + "가 죽었습니다...");
 			this.isDead = true;
-			return this.exp;
 		}
-		return 0;
 	}
 
 	abstract public int skill(Unit target);
@@ -65,7 +64,11 @@ abstract public class Unit {
 
 		curHp += heal;
 	}
-
+	
+	public boolean isDead() {
+		return this.isDead;
+	}
+	
 	public void levelUp() {
 		this.exp -= 100;
 		this.maxHp += this.maxHp / 3;
