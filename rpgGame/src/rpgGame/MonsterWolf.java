@@ -8,6 +8,9 @@ public class MonsterWolf extends Monster{
 
 	@Override
 	public int skill(Unit target) {
-		return 0;
+		String info = String.format("[%s]가 물어뜯기를 시전하였습니다.", this.getName());
+		System.out.println(info);
+		int attack = (int)(this.getOffensivePower()*1.5);
+		return attack;
 	}
 }

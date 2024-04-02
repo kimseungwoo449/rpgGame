@@ -55,6 +55,9 @@ public class StageBattle extends Stage {
 			attack();
 		else if (choice == SKILL)
 			skill();
+		else
+			return;
+		takeDamage();
 	}
 
 	private void attack() {
@@ -67,20 +70,28 @@ public class StageBattle extends Stage {
 				break;
 		}
 		int attack = player.getOffensivePower();
-		
+
 		if (player instanceof PlayerWarrior && ((PlayerWarrior) player).isSkilled()) {
-			attack*=3;
+			attack *= 3;
 			((PlayerWarrior) player).setIsSkilled();
 		}
 
-		monster.takeDamage(player, attack);
-		takeDamage();
+		player.attack(monster, attack);
 	}
 
 	private void takeDamage() {
 		for (Unit monster : monsters) {
 			if (!monster.isDead() && !player.isDead()) {
-				int attack = monster.getOffensivePower();
+				int randomSkill = ran.nextInt(4);
+				int attack = 0;
+				if (randomSkill == 0) {
+					attack = monster.skill(player);
+				} else {
+					attack = monster.getOffensivePower();
+				}
+
+				if (monster instanceof MonsterSlime && randomSkill == 0)
+					continue;
 				player.takeDamage(monster, attack);
 			}
 		}
@@ -98,10 +109,8 @@ public class StageBattle extends Stage {
 		if (player instanceof PlayerWizard) {
 			int attack = player.skill(monster);
 			monster.takeDamage(player, attack);
-			takeDamage();
 		} else if (player instanceof PlayerPaladin || player instanceof PlayerWarrior) {
 			player.skill(monster);
-			takeDamage();
 		}
 
 	}

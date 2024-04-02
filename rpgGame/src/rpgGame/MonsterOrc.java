@@ -9,6 +9,9 @@ public class MonsterOrc extends Monster{
 
 	@Override
 	public int skill(Unit target) {
-		return 0;
+		String info = String.format("[%s]가 강타를 시전하였습니다.", this.getName());
+		System.out.println(info);
+		int attack = this.getOffensivePower()*2;
+		return attack;
 	}
 }
