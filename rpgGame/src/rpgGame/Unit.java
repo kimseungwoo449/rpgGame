@@ -1,6 +1,5 @@
 package rpgGame;
 
-
 abstract public class Unit {
 	private int maxHp;
 	private int curHp;
@@ -23,13 +22,9 @@ abstract public class Unit {
 		System.out.println(info);
 
 		target.curHp -= attack;
-		
-		if (target.curHp <= 0) {
-			target.curHp = 0;
-			System.err.println("[" + target.name + "]" + "가 죽었습니다...");
-			target.isDead = true;
-		}
-		
+
+		printDeathMessage(target);
+
 		return this.offensivePower;
 	}
 
@@ -39,10 +34,14 @@ abstract public class Unit {
 
 		this.curHp -= attack;
 
-		if (this.curHp <= 0) {
-			this.curHp = 0;
-			System.err.println("[" + this.name + "]" + "가 죽었습니다...");
-			this.isDead = true;
+		printDeathMessage(this);
+	}
+
+	private void printDeathMessage(Unit target) {
+		if (target.curHp <= 0) {
+			target.curHp = 0;
+			System.err.println("[" + target.name + "]" + "가 죽었습니다...");
+			target.isDead = true;
 		}
 	}
 
