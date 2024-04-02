@@ -1,8 +1,5 @@
 package rpgGame;
 
-interface Healable{
-	
-}
 
 abstract public class Unit {
 	private int maxHp;
