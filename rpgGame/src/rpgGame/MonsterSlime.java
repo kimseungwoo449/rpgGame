@@ -1,9 +1,9 @@
 package rpgGame;
 
-public class UnitSlime extends Unit{
+public class MonsterSlime extends Monster{
 
 
-	public UnitSlime( int maxHp, int offensivePower, int exp) {
+	public MonsterSlime( int maxHp, int offensivePower, int exp) {
 		super("슬라임", maxHp, offensivePower, exp);
 	}
 

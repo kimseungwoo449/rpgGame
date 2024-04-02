@@ -11,7 +11,7 @@ public class UnitManager {
 	private static UnitManager instance = new UnitManager();
 	
 	private UnitManager() {
-		monsterName = new String[] { "UnitOrc", "UnitSlime", "UnitWolf" };
+		monsterName = new String[] { "MonsterOrc", "MonsterSlime", "MonsterWolf" };
 	}
 
 	public ArrayList<Unit> createMonsters() {

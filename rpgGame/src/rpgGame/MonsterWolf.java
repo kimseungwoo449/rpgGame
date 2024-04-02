@@ -1,8 +1,8 @@
 package rpgGame;
 
-public class UnitWolf extends Unit{
+public class MonsterWolf extends Monster{
 
-	public UnitWolf( int maxHp, int offensivePower, int exp) {
+	public MonsterWolf( int maxHp, int offensivePower, int exp) {
 		super("늑대", maxHp, offensivePower, exp);
 	}
 
